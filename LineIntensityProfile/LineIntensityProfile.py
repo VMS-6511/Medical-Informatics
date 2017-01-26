@@ -270,3 +270,31 @@ class LineIntensityProfileTest(ScriptedLoadableModuleTest):
 	translationTransformNode = slicer.vtkMRMLLinearTransformNode()
 	translationTransform = translationTransformNode.GetTransformToParent()
 	translationTransform.Identity()
+	
+	RasPoints = slicer.vtkMRMLMarkupsFiducialNode()
+	RasPoints.SetName('RasPoints')
+	slicer.mrmlScene.AddNode(RasPoints)
+	for x in range(5):
+		for y in range(5):
+			for z in range(5):
+				cx = (x-float(5-1)/2.0)*30.0
+				cy = (y-float(5-1)/2.0)*30.0
+				cz = (z-float(5-1)/2.0)*30.0
+				
+	RasPoints.GetDisplayNode.SetVisibility(False)
+	RasPoints.GetDisplayNode.SetColor(0,1,0)
+	
+	ReferencePoints = slicer.vtkMRMLMarkupsFiducialNode()
+	ReferencePoints.SetName('ReferencePoints')
+	slicer.mrmlScene.AddNode(ReferencePoints)
+	for x in range(5):
+		for y in range(5):
+			for z in range(5):
+				cx = (x-float(5-1)/2.0)*30.0 + x*0.25
+				cy = (y-float(5-1)/2.0)*30.0 + y*0.35
+				cz = (z-float(5-1)/2.0)*30.0 + z*0.40
+				
+	ReferencePoints.GetDisplayNode.SetVisibility(False)
+	RasPoints.GetDisplayNode.SetColor(0.5,1,0.5)
+	
+	
